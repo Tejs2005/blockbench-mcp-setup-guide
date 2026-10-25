@@ -16,7 +16,7 @@ const { Level } = require('level');
   const arr = JSON.parse(json);
   const before = JSON.stringify(arr.find(p => p.id === 'blockbench_mcp') || null);
   const idx = arr.findIndex(p => p.id === 'blockbench_mcp');
-  const entry = { id: 'blockbench_mcp', version: '1.9.0.1', path: '/home/linux/Desktop/blockbench_mcp.js', source: 'file' };
+  const entry = { id: 'blockbench_mcp', version: '1.9.0.1', path: process.env.HOME + '/Desktop/blockbench_mcp.js', source: 'file' };
   if (idx >= 0) arr[idx] = entry; else arr.push(entry);
   const out = Buffer.concat([prefix, Buffer.from(JSON.stringify(arr), 'latin1')]);
   await db.put(targetKey, out);
